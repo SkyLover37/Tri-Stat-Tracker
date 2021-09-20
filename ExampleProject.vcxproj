@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C0B55F99-9D53-34EE-9745-EA0B06F1E230}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ExampleProject</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <VcpkgEnabled>false</VcpkgEnabled>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="do_not_import_user.props" Condition="exists('do_not_import_user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ExampleProject.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">ExampleProject</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.dll</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleProject.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleProject</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.dll</TargetExt>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ExampleProject.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">ExampleProject</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.dll</TargetExt>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ExampleProject.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">ExampleProject</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.dll</TargetExt>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:referenceBinding /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Debug/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/Debug/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR="Debug";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR=\"Debug\";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Debug/ExampleProject.dll -installedDir D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/vcpkg_installed/x64-windows-static/debug/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Debug/ExampleProject.dll "F:\Skyrim SE - Mod Organizer\mods\Skylovers Mods - Better Mechanics/SKSE/PLugins/"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Debug/ExampleProject.pdb "F:\SteamLibrary\steamapps\common\Skyrim Special Edition/Data/SKSE/Plugins/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>CommonLibSSE\Debug\CommonLibSSE.lib;vcpkg_installed\x64-windows-static\debug\lib\spdlogd.lib;vcpkg_installed\x64-windows-static\debug\lib\spdlogd.lib;vcpkg_installed\x64-windows-static\debug\lib\fmtd.lib;Version.lib;vcpkg_installed\x64-windows-static\debug\lib\fmtd.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <EnableCOMDATFolding>false</EnableCOMDATFolding>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Debug/ExampleProject.lib</ImportLibrary>
+      <OptimizeReferences>false</OptimizeReferences>
+      <ProgramDataBaseFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Debug/ExampleProject.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:referenceBinding /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs /Ob3</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Release/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/Release/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR="Release";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR=\"Release\";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Release/ExampleProject.dll -installedDir D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/vcpkg_installed/x64-windows-static/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Release/ExampleProject.dll "F:\SteamLibrary\steamapps\common\Skyrim Special Edition/Data/SKSE/Plugins/"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Release/ExampleProject.pdb "F:\SteamLibrary\steamapps\common\Skyrim Special Edition/Data/SKSE/Plugins/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>CommonLibSSE\Release\CommonLibSSE.lib;vcpkg_installed\x64-windows-static\lib\spdlog.lib;vcpkg_installed\x64-windows-static\lib\spdlog.lib;vcpkg_installed\x64-windows-static\lib\fmt.lib;Version.lib;vcpkg_installed\x64-windows-static\lib\fmt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <GenerateDebugInformation>DebugFull</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Release/ExampleProject.lib</ImportLibrary>
+      <OptimizeReferences>true</OptimizeReferences>
+      <ProgramDataBaseFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/Release/ExampleProject.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:referenceBinding /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/MinSizeRel/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/MinSizeRel/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR="MinSizeRel";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR=\"MinSizeRel\";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/MinSizeRel/ExampleProject.dll -installedDir D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/vcpkg_installed/x64-windows-static/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/MinSizeRel/ExampleProject.dll "F:\SteamLibrary\steamapps\common\Skyrim Special Edition/Data/SKSE/Plugins/"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/MinSizeRel/ExampleProject.pdb "F:\SteamLibrary\steamapps\common\Skyrim Special Edition/Data/SKSE/Plugins/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>CommonLibSSE\MinSizeRel\CommonLibSSE.lib;vcpkg_installed\x64-windows-static\lib\spdlog.lib;vcpkg_installed\x64-windows-static\lib\spdlog.lib;vcpkg_installed\x64-windows-static\lib\fmt.lib;Version.lib;vcpkg_installed\x64-windows-static\lib\fmt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/MinSizeRel/ExampleProject.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/MinSizeRel/ExampleProject.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /utf-8 /Zc:alignedNew /Zc:auto /Zc:char8_t /Zc:__cplusplus /Zc:externC /Zc:externConstexpr /Zc:hiddenFriend /Zc:implicitNoexcept /Zc:lambda /Zc:noexceptTypes /Zc:referenceBinding /Zc:sizedDealloc /Zc:strictStrings /Zc:ternary /Zc:threadSafeInit /Zc:tlsGuards /Zc:trigraphs</AdditionalOptions>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ConformanceMode>true</ConformanceMode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <EnforceTypeConversionRules>true</EnforceTypeConversionRules>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/RelWithDebInfo/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/RelWithDebInfo/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <SDLCheck>true</SDLCheck>
+      <TreatAngleIncludeAsExternal>true</TreatAngleIncludeAsExternal>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <UseFullPaths>false</UseFullPaths>
+      <UseStandardPreprocessor>true</UseStandardPreprocessor>
+      <WarningLevel>Level4</WarningLevel>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR="RelWithDebInfo";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;_UNICODE;WINVER=0x0601;_WIN32_WINNT=0x0601;SKSE_SUPPORT_XBYAK;SPDLOG_COMPILED_LIB;SPDLOG_FMT_EXTERNAL;FMT_LOCALE;CMAKE_INTDIR=\"RelWithDebInfo\";ExampleProject_EXPORTS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\extern\CommonLibSSE\include;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+      <Command>setlocal
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -noprofile -executionpolicy Bypass -file D:/vcpkg/scripts/buildsystems/msbuild/applocal.ps1 -targetBinary D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/RelWithDebInfo/ExampleProject.dll -installedDir D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/vcpkg_installed/x64-windows-static/bin -OutVariable out
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/RelWithDebInfo/ExampleProject.dll "F:\SteamLibrary\steamapps\common\Skyrim Special Edition/Data/SKSE/Plugins/"
+if %errorlevel% neq 0 goto :cmEnd
+"C:\Program Files\CMake\bin\cmake.exe" -E copy D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/RelWithDebInfo/ExampleProject.pdb "F:\SteamLibrary\steamapps\common\Skyrim Special Edition/Data/SKSE/Plugins/"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+    </PostBuildEvent>
+    <Link>
+      <AdditionalDependencies>CommonLibSSE\RelWithDebInfo\CommonLibSSE.lib;vcpkg_installed\x64-windows-static\lib\spdlog.lib;vcpkg_installed\x64-windows-static\lib\spdlog.lib;vcpkg_installed\x64-windows-static\lib\fmt.lib;Version.lib;vcpkg_installed\x64-windows-static\lib\fmt.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/RelWithDebInfo/ExampleProject.lib</ImportLibrary>
+      <ProgramDataBaseFile>D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/RelWithDebInfo/ExampleProject.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <TreatLinkerWarningAsErrors>true</TreatLinkerWarningAsErrors>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker -BD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build --check-stamp-file D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeCXXCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeRCCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeSystem.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\vcpkg\status;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config-version.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfig.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigVersion.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\Version.h.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\version.rc.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\vcpkg.json;D:\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker -BD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build --check-stamp-file D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeCXXCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeRCCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeSystem.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\vcpkg\status;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config-version.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfig.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigVersion.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\Version.h.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\version.rc.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\vcpkg.json;D:\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker -BD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build --check-stamp-file D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeCXXCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeRCCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeSystem.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\vcpkg\status;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config-version.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfig.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigVersion.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\Version.h.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\version.rc.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\vcpkg.json;D:\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker -BD:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build --check-stamp-file D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCXXInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeCommonLanguageInclude.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeDependentOption.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeFindDependencyMacro.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeGenericSystem.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeInitializeConfigs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeLanguageInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeRCInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInformation.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CMakeSystemSpecificInitialize.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckCXXSourceCompiles.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckIncludeFileCXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\CheckLibraryExists.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\CMakeCommonCompilerMacros.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Compiler\MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageHandleStandardArgs.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindPackageMessage.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\FindThreads.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC-CXX.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows-MSVC.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\Windows.cmake;C:\Program Files\CMake\share\cmake-3.21\Modules\Platform\WindowsPaths.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeCXXCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeRCCompiler.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\3.21.2\CMakeSystem.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\vcpkg\status;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config-version.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-config.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\fmt\fmt-targets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfig.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-debug.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets-release.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigTargets.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\vcpkg_installed\x64-windows-static\share\spdlog\spdlogConfigVersion.cmake;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\Version.h.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\cmake\version.rc.in;D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\vcpkg.json;D:\vcpkg\scripts\buildsystems\vcpkg.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\TriStat.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClCompile Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\ExampleProject.dir\cmake_pch.cxx">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Debug/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/Debug/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Release/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/Release/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/MinSizeRel/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/MinSizeRel/cmake_pch.pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/RelWithDebInfo/cmake_pch.hxx</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/ExampleProject.dir/RelWithDebInfo/cmake_pch.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src\main.cpp">
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Debug/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/Release/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/MinSizeRel/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:/Skylover37/Source/MyMods/CommonLibSSE/Tri-Stat-Tracker/build/CMakeFiles/ExampleProject.dir/RelWithDebInfo/cmake_pch.hxx;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <ClInclude Include="..\src\TriStat.h" />
+    <ClInclude Include="..\src\utilities.h" />
+    <ClInclude Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\src\PCH.h" />
+    <ClInclude Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\include\Version.h" />
+    <ResourceCompile Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\version.rc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">NotUsing</PrecompiledHeader>
+    </ResourceCompile>
+    <None Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\.clang-format">
+    </None>
+    <None Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\.editorconfig">
+    </None>
+    <ClInclude Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\ExampleProject.dir\Debug\cmake_pch.hxx" />
+    <ClInclude Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\ExampleProject.dir\Release\cmake_pch.hxx" />
+    <ClInclude Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\ExampleProject.dir\MinSizeRel\cmake_pch.hxx" />
+    <ClInclude Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CMakeFiles\ExampleProject.dir\RelWithDebInfo\cmake_pch.hxx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\ZERO_CHECK.vcxproj">
+      <Project>{CBD20799-E5B8-3D5D-85E7-9F266723843B}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\Skylover37\Source\MyMods\CommonLibSSE\Tri-Stat-Tracker\build\CommonLibSSE\CommonLibSSE.vcxproj">
+      <Project>{578B6E7A-FD98-3F3B-B845-CC402F82BC3D}</Project>
+      <Name>CommonLibSSE</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

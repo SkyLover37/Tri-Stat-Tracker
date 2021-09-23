@@ -93,7 +93,7 @@ extern "C" DLLEXPORT bool SKSEAPI SKSEPlugin_Load(const SKSE::LoadInterface* a_s
 	logger::info("TriStatTracker Loaded");
 	
 	SKSE::Init(a_skse);
-	SKSE::AllocTrampoline(28);
+	SKSE::AllocTrampoline(400);
 	
 	ppsInterface = SKSE::GetPapyrusInterface();
 	//RE::BSScript::IVirtualMachine* a_vm

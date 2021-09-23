@@ -22,7 +22,7 @@ bool spellCharge = false;
 			return instance;
 		}
 		virtual void unk0() {}
-		virtual float PreCastGetAVO(RE::ActorValue, __int64*);  //__int64* avOwner, int av);
+		virtual float PreCastGetAVO(RE::ActorValue, __int64*, UINT64 kType);  //__int64* avOwner, int av);
 		virtual void unk1() {}
 		virtual float PreCastGetBAV(RE::ActorValue, __int64*);
 		inline static REL::Relocation<decltype(&PreCastGetAVO)> _PreCastGetAVO;
@@ -49,6 +49,21 @@ void TriStatTracker::bufferUpdate(float mod)
 	}
 }
 template <typename T>
+RE::TESGlobal* GetReplaceActorValue(int type)
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	switch (type) {
+	case 0:
+		return track->MVStorage[static_cast<int>(T::REPLACE)];
+	case 1:
+		return track->MVStorage[static_cast<int>(T::REDIRECT)];
+	case 2:
+		return track->MVStorage[static_cast<int>(T::REV_REDIRECT)];
+	}
+	return NULL;
+}
+
+template <typename T>
 void TriStatTracker::restored(float mod) 
 {
 
@@ -66,7 +81,10 @@ void TriStatTracker::restored(float mod)
 			}
 		}
 }
+template<typename T>
+bool HasKeywordString(T* toCheck, std::string name) {
 
+}
 
 template<typename T>
 void TriStatTracker::damaged(float mod)
@@ -146,7 +164,7 @@ bool ablock{ false };
 bool ranb{ false };
 void TriStatTracker::DamageActorValue(RE::PlayerCharacter* pCharacter, int AVModifiers, int actorVal, float mod, RE::TESObjectREFR* a5)
 {
-	
+	//Need to hook all the individual calls to this from their respective sources to better accurately tell what the damage is actually from. 
 	
 	TriStatTracker* track = TriStatTracker::GetSingleton();
 	//
@@ -155,6 +173,9 @@ void TriStatTracker::DamageActorValue(RE::PlayerCharacter* pCharacter, int AVMod
 	//	SKSE::sendNotification(SL::StringHex(&a5));
 
 	//	
+	RE::ActorValue AV2{};
+	RE::TESGlobal* glob{};
+	RE::TESForm* obj{};
 	if (&(*pCharacter) == &(**g_thePlayer)) {
 		//sizeof(TESObjectREFR) == 0x98)
 		
@@ -165,9 +186,21 @@ void TriStatTracker::DamageActorValue(RE::PlayerCharacter* pCharacter, int AVMod
 		case 24:
 			//UpdateTxt();
 			//actorVal = 25;
+			if (glob) {
+			} else 
+				if ((glob = GetReplaceActorValue<TriStatTracker::health>(0)) != NULL) {}
 			
-			if (ablock && mod < 0) {
-				logger::info("Blocked attack - Health");
+			else
+			
+				if ((glob = GetReplaceActorValue<TriStatTracker::health>(1)) != NULL) {}
+			
+			else
+			
+				if ((glob = GetReplaceActorValue<TriStatTracker::health>(2)) != NULL) {}
+			
+			if (ablock && mod < 0 && pCharacter->currentProcess && pCharacter->currentProcess->middleHigh && pCharacter->currentProcess->middleHigh->leftHand 
+				&& (obj = pCharacter->currentProcess->middleHigh->leftHand->object) != NULL && (glob = track->UniqueItemStorageGlobal[obj]) != NULL) {
+				logger::info("Blocked attack - Stamina");
 				logger::info(SL::String(AVModifiers) + "::" + SL::String(actorVal) + "::" + SL::String(mod));
 				if (ranb) {
 					ablock = false;
@@ -189,12 +222,31 @@ void TriStatTracker::DamageActorValue(RE::PlayerCharacter* pCharacter, int AVMod
 			break;
 		case 25:
 			//UpdateTxt();
+			if (glob) {
+			} else if ((glob = GetReplaceActorValue<TriStatTracker::magicka>(0)) != NULL) {
+			}
+
+			else
+
+				if ((glob = GetReplaceActorValue<TriStatTracker::magicka>(1)) != NULL) {
+			}
+
+			else
+
+				if ((glob = GetReplaceActorValue<TriStatTracker::magicka>(2)) != NULL) {
+			}
 			
 			if (te){
 				if (te->currentSpell) {
 					logger::info(te->currentSpell->GetFullName());
 					logger::info(SL::String(AVModifiers) + "::" + SL::String(actorVal) + "::" + SL::String(mod));
-					actorVal = 26;
+					AV2 = track->UniqueItemStorageInt[skyrim_cast<RE::TESForm*>(te->currentSpell)];
+					if (static_cast<int>(AV2) >= 24 && static_cast<int>(AV2) <= 26) {
+						actorVal = static_cast<int>(AV2);
+						logger::info("return was: " + SL::String(static_cast<int>(AV2)));
+					} else
+						(glob = track->UniqueItemStorageGlobal[skyrim_cast<RE::TESForm*>(te->currentSpell)]);
+					//_StopSpellCast(te);
 				}
 			}
 			if (!track->state)
@@ -212,20 +264,40 @@ void TriStatTracker::DamageActorValue(RE::PlayerCharacter* pCharacter, int AVMod
 			//UpdateTxt();
 			//actorVal = 25;
 			//if (ablock) {}
+			//actorVal = 25;
+			if (glob) {
+			} else if ((glob = GetReplaceActorValue<TriStatTracker::stamina>(0)) != NULL) {
+			}
+
+			else
+
+				if ((glob = GetReplaceActorValue<TriStatTracker::stamina>(1)) != NULL) {
+			}
+
+			else
+
+				if ((glob = GetReplaceActorValue<TriStatTracker::stamina>(2)) != NULL) {
+			}
 			
-			if (ablock && mod < 0) {
-				logger::info("Blocked attack - Stamina");
-				logger::info(SL::String(AVModifiers) + "::" + SL::String(actorVal) + "::" + SL::String(mod));
+			if (ablock && mod < 0 && pCharacter->currentProcess && pCharacter->currentProcess->middleHigh && pCharacter->currentProcess->middleHigh->leftHand 
+				&& (obj = pCharacter->currentProcess->middleHigh->leftHand->GetOwner()) != NULL && (glob = track->UniqueItemStorageGlobal[obj]) != NULL)
+			{
+				logger::info("Blocked attack - Stamina" + SL::String(obj->GetName()) + "::" + SL::String(AVModifiers) + "::" + SL::String(actorVal) + "::" + SL::String(mod));
 				if (ranb) {
 					ablock = false;
 					ranb = false;
 				} else {
 					ranb = true;
 				}
+				break;
 			}
-			
 			if (stop && pCharacter->GetAttackingWeapon()) {
-				logger::info(pCharacter->GetAttackingWeapon()->GetDisplayName());
+				logger::info("Name: " + SL::String(pCharacter->GetAttackingWeapon()->object->GetName()));
+				AV2 = track->UniqueItemStorageInt[skyrim_cast<RE::TESForm*>((pCharacter->GetAttackingWeapon())->object)];
+				if (static_cast<int>(AV2) >= 24 && static_cast<int>(AV2) <= 26) {
+					actorVal = static_cast<int>(AV2);
+					logger::info("return was: " + SL::String(static_cast<int>(AV2)));
+				}
 				logger::info(SL::String(AVModifiers) + "::" + SL::String(actorVal) + "::" + SL::String(mod));
 				stop = false;
 			}
@@ -250,20 +322,94 @@ void TriStatTracker::DamageActorValue(RE::PlayerCharacter* pCharacter, int AVMod
 		}
 	}
 	//Write the 3 updated stats to txt file.
+	
+	if (!glob) {
+		_DamageActorVal(pCharacter, AVModifiers, actorVal, mod, a5);
+		if (te && static_cast<int>(AV2) >= 24 && static_cast<int>(AV2) <= 26 && pCharacter->GetActorValue(AV2) <= 0.0)
+			_StopSpellCast(te);
+	}
+
+	else {
+		logger::info("Reducing global");
+		float val = glob->value;
+		val += mod;
+		logger::info("Global val: " + SL::String(val));
+		if (val < 0.0)
+			val = 0;
+		glob->value = val;
+		if (val == 0 && te)
+			_StopSpellCast(te);
+	}
 	te = NULL;
-	_DamageActorVal(pCharacter, AVModifiers, actorVal, mod, a5);
 	return;
 }
 bool forceAllow{ false };
-float DummyActorValue::PreCastGetAVO(RE::ActorValue av, __int64* avO)
+float DummyActorValue::PreCastGetAVO(RE::ActorValue av, __int64* avO, UINT64)
 {  //__int64* avOwner, int av) {
-	
-	REL::Relocation<uintptr_t> caster{ reinterpret_cast<uintptr_t>(avO) };
+	RE::MagicItem* spell{};
+	//logger::info(SL::String(hType));
+	//logger::info(SL::String(hType == 1));
+	REL::Relocation<RE::MagicCaster*> caster{ reinterpret_cast<uintptr_t>(avO) };
 	REL::Relocation<RE::Actor*> kActor{ *reinterpret_cast<uintptr_t*>(caster.address() + 0x0b8) };
-	logger::info(SL::StringHex(kActor.address()));
-	//logger::info(SL::StringHex(&(*caster)));
-	//logger::info(SL::StringHex(&(*SI)));
-	forceAllow = false;
+
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	RE::TESGlobal* glob{};
+	if (av == RE::ActorValue::kMagicka) {
+		//logger::info(SL::StringHex(kActor.address()));
+		RE::ActorValue tempAV{};
+		if (caster.get() && (spell = caster->currentSpell) != NULL) {
+			tempAV = track->UniqueItemStorageInt[skyrim_cast<RE::TESForm*>(spell)];
+			 if (static_cast<int>(tempAV) >= 24 && static_cast<int>(tempAV) <= 26)
+			{
+				logger::info("Form is a unqiue item");
+				av = tempAV;
+			} else if ((glob = track->UniqueItemStorageGlobal[skyrim_cast<RE::TESForm*>(spell)]) != NULL)
+				logger::info("Form is unique global item");
+			
+			//states: 3 = Holding, 4 = about to cast, 5 = unk, 6 = cast
+			
+			if (static_cast<int>(caster->state.get()) != 3)
+				te = caster.get();	
+				
+		}
+		
+
+	}
+	else {  //If not magic caster, convert avO as if it's actor
+		kActor = REL::Relocation<RE::Actor*>{ reinterpret_cast<uintptr_t>(avO) };  //assume avO is magicCaster first.
+		//logger::info(SL::StringHex(kActor.address()));
+	}
+	
+	
+	switch (av) {
+	case RE::ActorValue::kHealth:
+		if (glob)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::health>(0)) != NULL && glob->value > 0.0)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::health>(1)) != NULL && glob->value > 0.0)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::health>(2)) != NULL && glob->value > 0.0)
+			return glob->value;
+	case RE::ActorValue::kMagicka:
+		if (glob)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::magicka>(0)) != NULL && glob->value > 0.0)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::magicka>(1)) != NULL && glob->value > 0.0)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::magicka>(2)) != NULL && glob->value > 0.0)
+			return glob->value;
+	case RE::ActorValue::kStamina:
+		if (glob)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::stamina>(0)) != NULL && glob->value > 0.0)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::stamina>(1)) != NULL && glob->value > 0.0)
+			return glob->value;
+		if ((glob = GetReplaceActorValue<TriStatTracker::stamina>(2)) != NULL && glob->value > 0.0)
+			return glob->value;
+	}
 	
 	return kActor->GetActorValue(av);
 	//logger::info(SL::String(checkpc));
@@ -274,6 +420,7 @@ float DummyActorValue::PreCastGetBAV(RE::ActorValue av , __int64* avO) {
 	REL::Relocation<uintptr_t> caster{ reinterpret_cast<uintptr_t>(avO) };
 	REL::Relocation<RE::Actor*> kActor{ *reinterpret_cast<uintptr_t*>(caster.address() + 0x0b8) };
 	logger::info(SL::StringHex(kActor.address()));
+	
 	return kActor->GetActorValue(av);
 }
 void TriStatTracker::SpellCast(RE::MagicCaster* unk1, float unk2)
@@ -318,6 +465,10 @@ void TriStatTracker::SpellDec(RE::TESForm* Caster, int unk2, int unk3, float unk
 
 	_SpellDec(Caster, unk2, unk3, unk4, unk5);
 }
+// 0: Sprint check
+// 1: Magick focus chech
+// 2: MAgick continuous check
+// 3: Block check
 	TriStatTracker::TriStatTracker()
 {
 	logger::info("Starting plugin");
@@ -349,8 +500,10 @@ void TriStatTracker::SpellDec(RE::TESForm* Caster, int unk2, int unk3, float unk
 	//*
 	REL::Relocation<RE::Actor**> playerAV{ REL::ID(517014) };
 
-	uintptr_t ne = reinterpret_cast<uintptr_t>(&(**playerAV));
+	//uintptr_t ne = reinterpret_cast<uintptr_t>(&(**playerAV));
+	
 	//REL::Relocation<RE::ActorValue**> pav {ne + 0xB0};
+	/*
 	REL::Relocation<RE::ActorMagicCaster**> pav{ ne + 0x1A8 };
 	//*(*(ActorMagicCaster + 0B8) + 0B0) + 30 < Hooking this should give what we need.
 	REL::Relocation<uintptr_t> pav2{ reinterpret_cast<uintptr_t>(&(**pav)) };
@@ -367,9 +520,11 @@ void TriStatTracker::SpellDec(RE::TESForm* Caster, int unk2, int unk3, float unk
 	//_SpellDec = pav7.write_vfunc(6, reinterpret_cast<uintptr_t>(SpellDec)); //This is actually restoreactorval T.T;
 	//_PreCastGetAVO = pav7.write_vfunc(1, reinterpret_cast<uintptr_t>(PreCastGetAVO));
 	logger::info(SL::StringHex(pav2.address()));
+	REL::Relocation<uintptr_t> pav10(*reinterpret_cast<uintptr_t*>(pav9.address() + 0x50));
+	logger::info(SL::StringHex(pav10.address() + 0x1c6));
 	REL::Relocation<uintptr_t> pav9{ *reinterpret_cast<uintptr_t*>(pav2.address()) };
-	//_SpellCast = pav9.write_vfunc(29, reinterpret_cast<uintptr_t>(SpellCast));
-	
+	_SpellCast = pav9.write_vfunc(29, reinterpret_cast<uintptr_t>(SpellCast));
+	*/
 	//_PreCast = pav9.write_vfunc(3, PreCast);
 	//_SpellDec = pav2.write_vfunc(29, reinterpret_cast<uintptr_t>(SpellCast));
 	//
@@ -389,33 +544,327 @@ void TriStatTracker::SpellDec(RE::TESForm* Caster, int unk2, int unk3, float unk
 	//= trampoline.write_call<5>(vTab, DamageActorValue)
 	//_DamageActorVal = trampoline.write_call<5>(REL::ID(34284).address() + 0x9E, DamageActorValue);
 	
-	//auto& trampoline = SKSE::GetTrampoline();
-	//_DamageActorVal = trampoline.write_call<5>(REL::ID(34284).address() + 0x117, DamageActorValue); //Damage from actor
-	REL::Relocation<uintptr_t> pav10(*reinterpret_cast<uintptr_t*>(pav9.address() + 0x50));
-	logger::info(SL::StringHex(pav10.address() + 0x1c6));
-	//_PreCastGetAVO = trampoline.write_branch<5>(REL::ID(33364).address() + 0x1BC, PreCastGetAVO);
-
-	//_DamageActorVal = trampoline.write_call<5>(REL::ID(36345).address() + 0x11D, DamageActorValue); //damage from actor?
-
-	//_DamageActorVal = trampoline.write_call<5>(REL::ID(37522).address() + 0x14, DamageActorValue); //Generic call
+	auto& trampoline = SKSE::GetTrampoline();
 	
-	struct Code : Xbyak::CodeGenerator
+	
+	//_PreCastGetAVO = trampoline.write_branch<5>(REL::ID(33364).address() + 0x1BC, PreCastGetAVO);
+	//Shield AV check: (626400 + 0x8B5) 626CB5 - 626CC8 ID: 37633
+	//Run AV check = (63CAA0 + 0x204) 63CCA4 - 63CCB3 ID: 38046
+	// Run AvCheck = (6B8F20 + 0x103) 6B9023 - 6B9032 0xF ID: 39673
+	// Run AVCheck = (709580 + 0x1F) 70959F - 7095AE 0xA ID: 41358
+	// Allow hold to cast =  (541FC0 + 0x254) 542214 - 542228 0x14  ID: 33362
+	// SpellCAst call to AV = (541FC0 + 0x1B0) 542170 - 542184 0x14 ID: 33362
+	//Stop casting at 0 = 6214B4
+	struct alignFocus : Xbyak::CodeGenerator  //RAX, EDX
 	{
-		Code(uintptr_t addr)
+		alignFocus()
 		{
-			mov(rcx, addr); //Replace with my dummy class.
-			mov(edx, ebp); //Fix bytes
-			mov(r8, rbx); //Store MagicCaster in r8 to be able to get the actorvalueowner of the caller.
-			//r8 does not appear to be used for anything important before the next time it is filled, so should be safe.
-			//nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
 			nop();
 			
 		}
 	};
-	Code cc { reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()) };
+	struct hookFocus : Xbyak::CodeGenerator
+	{
+		hookFocus(uintptr_t addr, uintptr_t rtn)
+		{
+			Xbyak::Label rtnLbl;
+
+			mov(rax, ptr [ addr ]);
+			mov(edx, 0x19);
+			mov(r9, 0x1);
+			mov(r8, rbx);
+			jmp(ptr[rip + rtnLbl]);
+			L(rtnLbl);
+			dq(rtn);
+		}
+	};
+	alignFocus af{};
+	af.ready();
+	hookFocus hf{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(33362).address() + 0x254 + 0x14 };
+	REL::safe_write(REL::ID(33362).address() + 0x254, af.getCode(), af.getSize());
+	trampoline.write_branch<6>(REL::ID(33362).address() + 0x254, trampoline.allocate(hf));
+	struct alignSprint : Xbyak::CodeGenerator //RAX, EDX
+	{
+		alignSprint()
+		{
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+		}
+	};
+	struct hookSprint : Xbyak::CodeGenerator
+	{
+		hookSprint(uintptr_t addr, uintptr_t rtn) {
+			Xbyak::Label rtnLbl;
+
+			mov(rax, ptr[addr]);
+			mov(edx, 0x1A);
+			mov(r9, 0x0);
+			mov(r8, rcx);
+			jmp(ptr[rip + rtnLbl]);
+			L(rtnLbl);
+			dq(rtn);
+		}
+	};
+	alignSprint as{};
+	as.ready();
+	hookSprint hs{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(39673).address() + 0x103 + 0xA };
+	REL::safe_write(REL::ID(39673).address() + 0x103, as.getCode(), as.getSize());
+	trampoline.write_branch<6>(REL::ID(39673).address() + 0x103, trampoline.allocate(hs));
+	struct hookSprint2 : Xbyak::CodeGenerator
+	{
+		hookSprint2(uintptr_t addr, uintptr_t rtn)
+		{
+			Xbyak::Label rtnLbl;
+
+			mov(rax, ptr[addr]);
+			mov(edx, 0x1A);
+			mov(r9, 0x0);
+			mov(r8, rdi);
+			jmp(ptr[rip + rtnLbl]);
+			L(rtnLbl);
+			dq(rtn);
+		}
+	};
+	hookSprint2 hs2{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(38046).address() + 0x204 + 0xF };
+	REL::safe_write(REL::ID(38046).address() + 0x204, as.getCode(), as.getSize());
+	trampoline.write_branch<6>(REL::ID(38046).address() + 0x204, trampoline.allocate(hs2));
+	struct hookSprint3 : Xbyak::CodeGenerator
+	{
+		hookSprint3(uintptr_t addr, uintptr_t rtn)
+		{
+			Xbyak::Label rtnLbl;
+
+			mov(rax, ptr[addr]);
+			mov(edx, 0x1A);
+			mov(r9, 0x0);
+			mov(r8, rcx);
+			jmp(ptr[rip + rtnLbl]);
+			L(rtnLbl);
+			dq(rtn);
+		}
+	};
+	hookSprint3 hs3{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(41358).address() + 0x1F + 0xF };
+	REL::safe_write(REL::ID(41358).address() + 0x1F, as.getCode(), as.getSize());
+	trampoline.write_branch<6>(REL::ID(41358).address() + 0x24, trampoline.allocate(hs3));
+	struct alignBlock : Xbyak::CodeGenerator//RAX, EDX
+	{
+		alignBlock()
+		{
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+		}
+	};
+	struct hookBlock : Xbyak::CodeGenerator
+	{
+		hookBlock(uintptr_t addr, uintptr_t rtn)
+		{
+			Xbyak::Label rtnLbl;
+
+			mov(rax, ptr[addr]);
+			mov(edx, 0x1A);
+			mov(r8, r14);
+			mov(r9, 0x3);
+			jmp(ptr[rip + rtnLbl]);
+			L(rtnLbl);
+			dq(rtn);
+		}
+	};
+	alignBlock ab{};
+	ab.ready();
+	hookBlock hb{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(37633).address() + 0x8B5 + 0xC };
+	REL::safe_write(REL::ID(37633).address() + 0x8B5, ab.getCode(), ab.getSize());
+	trampoline.write_branch<6>(REL::ID(37633).address() + 0x8B5, trampoline.allocate(hb));
+	struct alignCaster : Xbyak::CodeGenerator
+	{
+		alignCaster() {
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+		}
+	};
+	struct Code : Xbyak::CodeGenerator
+	{
+		Code(uintptr_t addr, uintptr_t rtn)
+		{
+			Xbyak::Label artn;
+			mov(rcx, addr); //Replace with my dummy class.
+			mov(edx, ebp);
+			mov(r8, rbx); //Store MagicCaster in r8 to be able to get the actorvalueowner of the caller.
+			//r8 does not appear to be used for anything important before the next time it is filled, so should be safe.
+			mov(r9, 0x2);
+			//nop();
+			jmp(ptr[rip + artn]);
+			L(artn);
+			dq(rtn);
+		}
+	};
+	alignCaster aC{};
+	aC.ready();
+	Code cc{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(33364).address() + 0x19F + 0x7};
 	cc.ready();
 	logger::info(SL::StringHex(&(*DummyActorValue::GetSingleton())));
-	REL::safe_write(REL::ID(33364).address() + 0x19F, cc.getCode(), cc.getSize());
+	REL::safe_write(REL::ID(33364).address() + 0x19F, aC.getCode(), aC.getSize());
+	trampoline.write_branch<6>(REL::ID(33364).address() + 0x19F, trampoline.allocate(cc));
+	struct alignBy17 : Xbyak::CodeGenerator
+	{
+		alignBy17()
+		{
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+		}
+	};
+	struct hookContinue : Xbyak::CodeGenerator
+	{
+		hookContinue(uintptr_t addr, uintptr_t rtn)
+		{
+			Xbyak::Label rtnLbl;
+
+			mov(rax, ptr[addr]);
+			mov(edx, r15d);
+			mov(r9, 0x2);
+			mov(r8, rbx);
+			jmp(ptr[rip + rtnLbl]);
+			L(rtnLbl);
+			dq(rtn);
+		}
+	};
+	// SpellCAst call to AV = (541FC0 + 0x1B0) 542170 - 542184 0x14 ID: 33362
+	alignBy17 a17{};
+	aC.ready();
+	hookContinue hc{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(33362).address() + 0x1B0 + 0x14 };
+	hc.ready();
+	logger::info(SL::StringHex(&(*DummyActorValue::GetSingleton())));
+	REL::safe_write(REL::ID(33362).address() + 0x1B0, a17.getCode(), a17.getSize());
+	trampoline.write_branch<6>(REL::ID(33362).address() + 0x1B0, trampoline.allocate(hc));
+
+
+	struct alignPowerAttk : Xbyak::CodeGenerator
+	{
+		alignPowerAttk()
+		{
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+			nop();
+
+		};
+	};
+	struct Code2 : Xbyak::CodeGenerator
+	{
+		Code2(uintptr_t addr, uintptr_t rtn) {
+			
+			Xbyak::Label hookaddr;
+			Xbyak::Label returnaddr;
+			//L(hookaddr);
+			//L(".call");
+			//acall;
+			//L(".cmp");
+			//comp;
+			mov(rax, ptr[addr]);
+			mov(r8, rbx);
+			mov(r9, 0x4);
+			mov(edx, 0x1a);
+			jmp(ptr[rip + returnaddr]);
+
+			L(hookaddr);
+			dq(addr);
+
+			L(returnaddr);
+			dq(rtn);  //0x16);
+
+			
+			
+
+			//jmp(hookaddr.getAddress());
+		}
+	};
+	Code2 cc2{ reinterpret_cast<uintptr_t>(DummyActorValue::GetSingleton()), REL::ID(38047).address() + 0xC8 + 0xc };  //, REL::Module::get().base() + 0x63D07F
+	cc2.ready();
+	alignPowerAttk apa{};
+	apa.ready();
+	REL::safe_write(REL::ID(38047).address() + 0xC8, apa.getCode(), apa.getSize());
+	trampoline.write_branch<6>(REL::ID(38047).address() + 0xC8, trampoline.allocate(cc2));
+	
+
+	_DamageActorVal = trampoline.write_call<5>(REL::ID(34284).address() + 0x117, DamageActorValue);  //Damage from actor
+	_DamageActorVal = trampoline.write_call<5>(REL::ID(36345).address() + 0x11D, DamageActorValue);  //damage from actor?
+
+	_DamageActorVal = trampoline.write_call<5>(REL::ID(37522).address() + 0x14, DamageActorValue);  //Generic call
+	// address of stop casting 33630 SpellCast
+	_StopSpellCast = REL::ID(33630).address();
+	logger::info(SL::String("Function address" + SL::StringHex(_StopSpellCast.address())));
 	//trampoline.write_branch<6>(REL::Module::get().base() + 0x542258, trampoline.allocate(cc));
 	
 	//_DamageActorVal = trampoline.write_call<5>(REL::ID(34286).address() + 0x2D1, DamageActorValue); //Calls DAV constantly
@@ -557,6 +1006,189 @@ void RemoveStorageSingleGlobal(RE::StaticFunctionTag*, int location, std::string
 	track->slccStorage[mapKey].erase(track->slccStorage[mapKey].find(storageKey[location]));
 
 }
+
+template<typename T>
+void ReplaceActorValue(RE::TESGlobal* toAdd)
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	track->MVStorage[static_cast<int>(T::REPLACE)] = toAdd;
+}
+void ReplaceActorValuePap(RE::StaticFunctionTag*, int type, RE::TESGlobal* toAdd)
+{
+	
+	switch (type) {
+	case 0:
+		ReplaceActorValue<TriStatTracker::health>(toAdd);
+		break;
+	case 1:
+		ReplaceActorValue<TriStatTracker::magicka>(toAdd);
+		break;
+	case 2:
+		ReplaceActorValue<TriStatTracker::stamina>(toAdd);
+		break;
+	}
+}
+void ReplaceActorValueInt(RE::StaticFunctionTag*, int type, int AV) 
+{
+	logger::info("Replacing AV");
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	switch (AV) {
+	case 24:
+		track->MVIntStorage[type] = RE::ActorValue::kHealth;
+		break;
+	case 25:
+		track->MVIntStorage[type] = RE::ActorValue::kMagicka;
+		break;
+	case 26:
+		track->MVIntStorage[type] = RE::ActorValue::kStamina;
+		break;
+	}
+}
+void RemoveReplaceActorValueInt(RE::StaticFunctionTag*, int type) 
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	track->MVIntStorage.erase(type);
+}
+
+void RemoveReplaceActorValuePap(RE::StaticFunctionTag*, int type, RE::TESGlobal* toAdd) {
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	switch (type) {
+	case 0:
+		if (track->MVStorage[static_cast<int>(TriStatTracker::health::REPLACE)] == toAdd)
+			track->MVStorage.erase(static_cast<int>(TriStatTracker::health::REPLACE));
+		break;
+	case 1:
+		if (track->MVStorage[static_cast<int>(TriStatTracker::magicka::REPLACE)] == toAdd)
+			track->MVStorage.erase(static_cast<int>(TriStatTracker::magicka::REPLACE));
+		break;
+	case 2:
+		if (track->MVStorage[static_cast<int>(TriStatTracker::stamina::REPLACE)] == toAdd)
+			track->MVStorage.erase(static_cast<int>(TriStatTracker::stamina::REPLACE));
+		break;
+	}
+}
+template<typename T>
+void RedirectActorValue(RE::TESGlobal* toAdd, bool reverse)
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	if (reverse) {
+		track->MVStorage[static_cast<int>(T::REV_REDIRECT)] = toAdd;
+		return;
+	}
+	track->MVStorage[static_cast<int>(T::REDIRECT)] = toAdd;
+}
+void RedirectActorValuePap(RE::StaticFunctionTag*, int type, RE::TESGlobal* toAdd, bool reverse)
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	switch (type) {
+	case 0:
+		if (!reverse)
+			track->MVStorage[static_cast<int>(TriStatTracker::health::REDIRECT)] = toAdd;
+		else
+			track->MVStorage[static_cast<int>(TriStatTracker::health::REV_REDIRECT)] = toAdd;
+		break;
+	case 1:
+		if (!reverse)
+			track->MVStorage[static_cast<int>(TriStatTracker::magicka::REDIRECT)] = toAdd;
+		else
+			track->MVStorage[static_cast<int>(TriStatTracker::magicka::REV_REDIRECT)] = toAdd;
+		break;
+	case 2:
+		if (!reverse)
+			track->MVStorage[static_cast<int>(TriStatTracker::stamina::REDIRECT)] = toAdd;
+		else
+			track->MVStorage[static_cast<int>(TriStatTracker::stamina::REV_REDIRECT)] = toAdd;
+		break;
+
+	}
+	
+
+}
+//void RedirectActorValueInt(RE::StaticFunctionTag*, int type, int AV, RE::TESGlobal*) 
+//{
+//
+//}
+//void RemoveRedirectActorValueInt(RE::StaticFunctionTag*, int type, int AV) 
+//{
+
+//}
+
+
+void RemoveRedirectActorValue(RE::StaticFunctionTag*, int type, RE::TESGlobal* toAdd, bool reverse)
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	RE::TESGlobal* check{};
+	switch (type) {
+	case 0:
+
+		if (!reverse) {
+			if ((check = GetReplaceActorValue<TriStatTracker::health>(1)) != NULL && check == toAdd)
+				track->MVStorage.erase(static_cast<int>(TriStatTracker::health::REDIRECT));
+		}
+		else {
+			if ((check = GetReplaceActorValue<TriStatTracker::health>(2)) != NULL && check == toAdd)
+				track->MVStorage.erase(static_cast<int>(TriStatTracker::health::REV_REDIRECT));
+		}
+		break;
+	case 1:
+		if (!reverse) {
+
+			if ((check = GetReplaceActorValue<TriStatTracker::magicka>(1)) != NULL && check == toAdd)
+				track->MVStorage.erase(static_cast<int>(TriStatTracker::magicka::REDIRECT));
+		} else {
+			if ((check = GetReplaceActorValue<TriStatTracker::magicka>(2)) != NULL && check == toAdd)
+				track->MVStorage.erase(static_cast<int>(TriStatTracker::magicka::REV_REDIRECT));
+		}
+		break;
+	case 2:
+		if (!reverse) {
+			if ((check = GetReplaceActorValue<TriStatTracker::stamina>(1)) != NULL && check == toAdd)
+				track->MVStorage.erase(static_cast<int>(TriStatTracker::stamina::REDIRECT));
+		} else {
+			if ((check = GetReplaceActorValue<TriStatTracker::stamina>(2)) != NULL && check == toAdd)
+				track->MVStorage.erase(static_cast<int>(TriStatTracker::stamina::REV_REDIRECT));
+		}
+		break;
+	}
+}
+void AddUniqueItem(RE::StaticFunctionTag*, RE::TESForm* addForm, int actorVal) 
+{
+	logger::info("Adding unique shield");
+	RE::ActorValue AV{};
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	switch (actorVal) {
+	case 24:
+		AV = RE::ActorValue::kHealth;
+		break;
+	case 25:
+		AV = RE::ActorValue::kMagicka;
+		break;
+	case 26:
+		AV = RE::ActorValue::kStamina;
+		break;
+	}
+	track->UniqueItemStorageInt[addForm] = AV;
+	
+}
+void AddUniqueItemGlobal(RE::StaticFunctionTag*, RE::TESForm* addForm, RE::TESGlobal* addGlobal)
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	track->UniqueItemStorageGlobal[addForm] = addGlobal;
+}
+void RemoveUniqueItem(RE::StaticFunctionTag*, RE::TESForm* removeForm) 
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	track->UniqueItemStorageInt.erase(removeForm);
+
+}
+void RemoveUniqueItemGlobal(RE::StaticFunctionTag*, RE::TESForm* removeForm)
+{
+	TriStatTracker* track = TriStatTracker::GetSingleton();
+	track->UniqueItemStorageGlobal.erase(removeForm);
+}
+
+
+
 bool AddStorageGlobals(RE::StaticFunctionTag*, RE::BGSListForm* globalVals, std::string mapKey)
 {
 	
@@ -587,6 +1219,21 @@ void RemoveStorageGlobals(RE::StaticFunctionTag*, std::string mapKey) {
 }
 bool RegisterFuncs(RE::BSScript::IVirtualMachine* a_vm)
 {
+	a_vm->RegisterFunction("AddUniqueItem", "TST_SKSE", AddUniqueItem);
+	a_vm->RegisterFunction("AddUniqueItemGlobal", "TST_SKSE", AddUniqueItemGlobal);
+
+	a_vm->RegisterFunction("RemoveUniqueItem", "TST_SKSE", RemoveUniqueItem);
+	a_vm->RegisterFunction("RemoveUniqueItemGlobal", "TST_SKSE", RemoveUniqueItemGlobal);
+
+	//a_vm->RegisterFunction("RemoveRedirectActorValue", "TST_SKSE", RemoveRedirectActorValue);
+	//a_vm->RegisterFunction("RedirectActorValue", "TST_SKSE", RedirectActorValuePap);
+	
+	a_vm->RegisterFunction("RemoveReplaceActorValue", "TST_SKSE", RemoveReplaceActorValuePap);
+	a_vm->RegisterFunction("ReplaceActorValue", "TST_SKSE", ReplaceActorValuePap);
+	a_vm->RegisterFunction("RemoveReplaceActorValueWithAV", "TST_SKSE", RemoveReplaceActorValueInt);
+	a_vm->RegisterFunction("ReplaceActorValueWithAV", "TST_SKSE", ReplaceActorValueInt);
+
+
 	a_vm->RegisterFunction("StartTracker", "TST_SKSE", StartPlugin);
 	a_vm->RegisterFunction("StopTracker", "TST_SKSE", StopPlugin);
 	a_vm->RegisterFunction("GetTrackerState", "TST_SKSE", GetState);
